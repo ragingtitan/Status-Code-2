@@ -6,8 +6,14 @@ import { useContext } from "react";
 import { AppContext } from "./AppContext";
 import PopupMsg from "./PopupMsg";
 const Navbar = () => {
-  const { popup, setPopup } = useContext(AppContext);
-
+  const {
+    popup,
+    setPopup,
+    isRansomwareActive,
+    setIsRansomwareActive,
+    isSessionActive,
+    setIsSessionActive,
+  } = useContext(AppContext);
   return (
     <div className="bg-gray-900 fixed h-8 z-10000 w-full flex justify-between text-gray-200 px-4 shadow-md">
       <div className="flex items-center">
@@ -31,9 +37,38 @@ const Navbar = () => {
         <button
           onClick={() =>
             setPopup({
-              open: true, // make sure open flag is set
+              open: true,
               heading: "Power off",
-              message: "Do you want to power off?",
+              message: (
+                <div>
+                  <p>Do you want to power off?</p>
+                  <div className="flex gap-2 mt-3">
+                    <button
+                      onClick={() => {
+                        console.log("Shutting down…");
+                        setIsSessionActive(false);
+                        setIsRansomwareActive(false);
+                        // you can call API / logout / etc.
+                        setPopup((prev) => ({ ...prev, open: false }));
+                      }}
+                      className="px-4 py-2 bg-red-600 text-white rounded"
+                    >
+                      Shutdown
+                    </button>
+                    <button
+                      onClick={() =>
+                        setPopup((prev) => ({ ...prev, open: false }))
+                      }
+                      className="px-4 py-2 bg-gray-400 text-black rounded"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              ),
+              onClose: () => {
+                console.log("Popup closed manually");
+              },
             })
           }
           className="hover:text-blue-400"
