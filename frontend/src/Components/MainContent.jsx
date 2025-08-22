@@ -3,15 +3,17 @@ import Sidebar from "./Sidebar";
 import Icons from "./Icons";
 import { useContext } from "react";
 import { AppContext } from "./AppContext";
-import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
+
 const MainContent = () => {
+  const { isRansomwareActive } = useContext(AppContext);
   return (
     <div
       className="main-content bg-cover min-h-screen"
       style={{
-        backgroundImage: "url(./src/assets/wallpaper.jpg)",
+        backgroundImage: isRansomwareActive
+          ? "url(./src/assets/locked.png)":"url(./src/assets/wallpaper.jpg)",
         backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
         backgroundSize: "cover",
       }}
     >

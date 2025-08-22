@@ -1,0 +1,18 @@
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-07T12:41:11.930Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-07T12:41:12.636Z"}
+{"level":"error","message":"MongoDB connection error: err is not defined","timestamp":"2025-05-07T12:45:46.406Z"}
+{"level":"warn","message":"Retrying MongoDB connection (1/5) in 5 seconds...","timestamp":"2025-05-07T12:45:46.407Z"}
+{"level":"error","message":"MongoDB connection error: err is not defined","timestamp":"2025-05-07T12:45:47.121Z"}
+{"level":"warn","message":"Retrying MongoDB connection (2/5) in 5 seconds...","timestamp":"2025-05-07T12:45:47.122Z"}
+{"level":"error","message":"MongoDB connection error: err is not defined","timestamp":"2025-05-07T12:45:51.413Z"}
+{"level":"warn","message":"Retrying MongoDB connection (3/5) in 5 seconds...","timestamp":"2025-05-07T12:45:51.413Z"}
+{"level":"error","message":"MongoDB connection error: err is not defined","timestamp":"2025-05-07T12:45:52.125Z"}
+{"level":"warn","message":"Retrying MongoDB connection (4/5) in 5 seconds...","timestamp":"2025-05-07T12:45:52.126Z"}
+{"level":"error","message":"MongoDB connection error: err is not defined","timestamp":"2025-05-07T12:45:56.428Z"}
+{"level":"warn","message":"Retrying MongoDB connection (5/5) in 5 seconds...","timestamp":"2025-05-07T12:45:56.428Z"}
+{"level":"error","message":"MongoDB connection error: err is not defined","timestamp":"2025-05-07T12:45:57.129Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-07T12:45:58.443Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-07T12:45:59.010Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-07T12:46:16.400Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-07T12:46:16.943Z"}
+{"device":{"browser":"Chrome","os":"Windows 10.0","platform":"Microsoft Windows"},"event":"login","ip":"::1","level":"info","location":"Unknown","message":"ragingtitan logged in","time":"2025-05-07T12:48:50.778Z","timestamp":"2025-05-07T12:48:50.779Z","user":"ragingtitan","userAgentRaw":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}

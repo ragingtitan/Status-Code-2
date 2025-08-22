@@ -10,6 +10,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
 }
 
 /* Apply user-select: none and overflow: hidden only to specific elements if needed */

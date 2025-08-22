@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "/home/rooster/github/AgentForceAI-Hackathon/backend/logs/.activity-audit.json",
+    "files": [
+        {
+            "date": 1744976971575,
+            "name": "/home/rooster/github/AgentForceAI-Hackathon/backend/logs/activity-2025-04-18.log",
+            "hash": "8a5245ab2ec86c139bf67f4f50640f31ef46a639082750dc40c6e5740c83c9d0"
+        },
+        {
+            "date": 1745040396917,
+            "name": "/home/rooster/github/AgentForceAI-Hackathon/backend/logs/activity-2025-04-19.log",
+            "hash": "0b246e9d4d5e5cc3b803a20108149cf91ee9f84e0492f62981ce86e4a6f3e4aa"
+        },
+        {
+            "date": 1745217380411,
+            "name": "/home/rooster/github/AgentForceAI-Hackathon/backend/logs/activity-2025-04-21.log",
+            "hash": "e8eeaee8a6dcd40e739501c74c6b30a524bf5287e4c53784593df2e6bdb521d6"
+        }
+    ],
+    "hashType": "sha256"
+}
