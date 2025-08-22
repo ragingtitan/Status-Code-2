@@ -10,7 +10,7 @@ export const useDesktop = () => useContext(DesktopContext);
 export const DesktopProvider = ({ children }) => {
   const [openFolders, setOpenFolders] = useState([]);
   const [openFiles, setOpenFiles] = useState([]);
-
+  const [isRansomwareActive, setIsRansomwareActive] = useState(false);
   // Open a folder
   const openFolder = (folder) => {
     if (!openFolders.includes(folder)) setOpenFolders([...openFolders, folder]);
@@ -40,6 +40,8 @@ export const DesktopProvider = ({ children }) => {
         closeFolder,
         openFile,
         closeFile,
+        isRansomwareActive,
+        setIsRansomwareActive,
       }}
     >
       {children}

@@ -1,26 +1,39 @@
-import React from 'react'
-import {FaWifi, FaSpeakerDeck} from 'react-icons/fa'
-import {MdBatteryFull, MdPower} from 'react-icons/md'
-import {FiVolume2, FiPower} from 'react-icons/fi'
+import React from "react";
+import { FaWifi, FaSpeakerDeck } from "react-icons/fa";
+import { MdBatteryFull, MdPower } from "react-icons/md";
+import { FiVolume2, FiPower } from "react-icons/fi";
 const Navbar = () => {
   return (
-    <div className='bg-black fixed h-6 w-full flex justify-between text-white px-2'>
-        <div className='flex'>
-            <button className='text-white'>Activities</button>
-        </div>
-        <div>
-            <span className='date flex w-fit'>19 Sep, 09:36</span>
-        </div>
-        <div className='flex gap-2'>
-            <button><FaWifi/></button>
-            <button><FiVolume2 fill='white'/></button>
-            <button><MdBatteryFull/></button>
-            <button><MdPower/></button>
-            <button><FiPower/></button>
-
-        </div>
+    <div className="bg-gray-900 fixed h-8 z-10000 w-full flex justify-between text-gray-200 px-4 shadow-md">
+      <div className="flex items-center">
+        <button className="text-gray-200 hover:text-blue-400 font-mono">
+          Activities
+        </button>
+      </div>
+      <div className="flex items-center">
+        <span className="date flex w-fit font-mono text-sm">
+          19 Sep, 09:36
+        </span>
+      </div>
+      <div className="flex gap-3 items-center">
+        <button className="hover:text-blue-400">
+          <FaWifi />
+        </button>
+        <button className="hover:text-blue-400">
+          <FiVolume2 />
+        </button>
+        <button className="hover:text-blue-400">
+          <MdBatteryFull />
+        </button>
+        <button className="hover:text-blue-400">
+          <MdPower />
+        </button>
+        <button className="hover:text-blue-400">
+          <FiPower />
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
