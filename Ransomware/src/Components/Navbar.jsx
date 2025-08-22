@@ -2,7 +2,12 @@ import React from "react";
 import { FaWifi, FaSpeakerDeck } from "react-icons/fa";
 import { MdBatteryFull, MdPower } from "react-icons/md";
 import { FiVolume2, FiPower } from "react-icons/fi";
+import { useContext } from "react";
+import { AppContext } from "./AppContext";
+import PopupMsg from "./PopupMsg";
 const Navbar = () => {
+  const { popup, setPopup } = useContext(AppContext);
+
   return (
     <div className="bg-gray-900 fixed h-8 z-10000 w-full flex justify-between text-gray-200 px-4 shadow-md">
       <div className="flex items-center">
@@ -11,9 +16,7 @@ const Navbar = () => {
         </button>
       </div>
       <div className="flex items-center">
-        <span className="date flex w-fit font-mono text-sm">
-          19 Sep, 09:36
-        </span>
+        <span className="date flex w-fit font-mono text-sm">19 Sep, 09:36</span>
       </div>
       <div className="flex gap-3 items-center">
         <button className="hover:text-blue-400">
@@ -25,10 +28,20 @@ const Navbar = () => {
         <button className="hover:text-blue-400">
           <MdBatteryFull />
         </button>
-        <button className="hover:text-blue-400">
+        <button
+          onClick={() =>
+            setPopup({
+              open: true, // make sure open flag is set
+              heading: "Power off",
+              message: "Do you want to power off?",
+            })
+          }
+          className="hover:text-blue-400"
+        >
           <FiPower />
         </button>
       </div>
+      <PopupMsg />
     </div>
   );
 };
