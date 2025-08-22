@@ -1,6 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "./AppContext";
 export default function StartPage() {
+  const { setIsRansomwareActive,
+setIsSessionActive } = useContext(AppContext);
+const navigate = useNavigate();
   return (
     <div className="w-full h-screen bg-gradient-to-br from-purple-700 via-indigo-700 to-pink-600 flex flex-col justify-center items-center text-white relative overflow-hidden">
       {/* Static background pattern instead of animated circles */}
@@ -16,12 +21,15 @@ export default function StartPage() {
 
       {/* Call to action buttons */}
       <div className="flex gap-6 p-4">
-        <Link
+        <button onClick={() => {
+          setIsSessionActive(true);
+          navigate("/main");
+        }}
           to="/main"
           className="px-8 py-3 bg-red-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
         >
           Start Simulation
-        </Link>
+        </button>
         <Link
           to="/about"
           className="px-8 py-3 border-2 border-white font-semibold rounded-full hover:bg-white hover:text-purple-700 transition-colors duration-300"

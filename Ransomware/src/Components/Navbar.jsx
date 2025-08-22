@@ -26,9 +26,6 @@ const Navbar = () => {
           <MdBatteryFull />
         </button>
         <button className="hover:text-blue-400">
-          <MdPower />
-        </button>
-        <button className="hover:text-blue-400">
           <FiPower />
         </button>
       </div>
