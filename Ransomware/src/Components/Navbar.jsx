@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaWifi, FaSpeakerDeck} from 'react-icons/fa'
-import {MdBatteryFull} from 'react-icons/md'
-import {FiVolume2} from 'react-icons/fi'
+import {MdBatteryFull, MdPower} from 'react-icons/md'
+import {FiVolume2, FiPower} from 'react-icons/fi'
 const Navbar = () => {
   return (
     <div className='bg-black fixed h-6 w-full flex justify-between text-white px-2'>
@@ -15,6 +15,9 @@ const Navbar = () => {
             <button><FaWifi/></button>
             <button><FiVolume2 fill='white'/></button>
             <button><MdBatteryFull/></button>
+            <button><MdPower/></button>
+            <button><FiPower/></button>
+
         </div>
     </div>
   )
