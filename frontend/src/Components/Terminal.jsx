@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Rnd } from "react-rnd";
-import { useDesktop } from "../context/DesktopContext";
+import { AppContext } from "./AppContext";
 
 const fakeCommands = {
   help: "Available commands: help, whoami, date, clear",
@@ -10,9 +10,13 @@ const fakeCommands = {
 };
 
 export default function Terminal({ terminal }) {
-  const { closeFile } = useDesktop();
+  // ✅ useContext properly
+  const { closeFile } = useContext(AppContext);
+
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState(["Welcome to the simulated terminal. Type 'help'"]);
+  const [output, setOutput] = useState([
+    "Welcome to the simulated terminal. Type 'help'",
+  ]);
 
   const handleCommand = (cmd) => {
     const trimmed = cmd.trim();
@@ -23,21 +27,25 @@ export default function Terminal({ terminal }) {
         setOutput((prev) => [...prev, `$ ${trimmed}`, fakeCommands[trimmed]]);
       }
     } else {
-      setOutput((prev) => [...prev, `$ ${trimmed}`, `Command not found: ${trimmed}`]);
+      setOutput((prev) => [
+        ...prev,
+        `$ ${trimmed}`,
+        `Command not found: ${trimmed}`,
+      ]);
     }
     setInput("");
   };
 
   return (
-    <Rnd
-      default={{ x: 150, y: 150, width: 500, height: 300 }}
-      bounds="parent"
-    >
+    <Rnd default={{ x: 150, y: 150, width: 500, height: 300 }} bounds="parent">
       <div className="flex flex-col bg-black text-white border border-gray-600 rounded shadow-lg h-full">
         {/* Title Bar */}
         <div className="flex justify-between items-center bg-gray-800 px-3 py-1">
-          <span>{terminal.name}</span>
-          <button className="text-red-400" onClick={() => closeFile(terminal)}>
+          <span>{terminal?.name || "Terminal"}</span>
+          <button
+            className="text-red-400"
+            onClick={() => closeFile(terminal)}
+          >
             X
           </button>
         </div>

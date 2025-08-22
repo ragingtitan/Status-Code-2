@@ -69,7 +69,7 @@ export const DesktopProvider = ({ children }) => {
 
   const [isRansomwareActive, setIsRansomwareActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isSessionActive, setIsSessionActive] = useState(false);
+  const [isSessionActive, setIsSessionActive] = useState(true);
   const [popup, setPopup] = useState({heading: "", message: "", open: false});
 
  return (

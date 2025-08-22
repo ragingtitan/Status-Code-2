@@ -25,7 +25,6 @@ const navigate = useNavigate();
           setIsSessionActive(true);
           navigate("/main");
         }}
-          to="/main"
           className="px-8 py-3 bg-red-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
         >
           Start Simulation

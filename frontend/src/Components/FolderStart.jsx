@@ -1,6 +1,11 @@
 import { Rnd } from "react-rnd";
 import { FaWindowClose } from "react-icons/fa";
+import { encrypt } from "./Encrypt";
+import { useContext } from "react";
+import { AppContext } from "./AppContext";
+
 export default function Start({ folder, onClose }) {
+  const { isRansomwareActive } = useContext(AppContext);
   return (
     <Rnd
       default={{
@@ -21,21 +26,40 @@ export default function Start({ folder, onClose }) {
         </div>
 
         {/* Folder content */}
-        <div className="grid grid-cols-3 gap-4 p-4 flex-1 overflow-auto">
+        <div className={` p-4 flex-1 overflow-auto ${!isRansomwareActive ? 'grid grid-cols-3 gap-4' : 'hidden'}`}>
           {folder?.children.map((child, idx) => (
-            <div
-              key={idx}
-              className=""
-            >
+            <div key={idx} className="">
               {console.log(child)}
-              <a href="" className="flex flex-col items-center text-white cursor-pointer">
+              <a
+                href=""
+                className="flex flex-col items-center text-white cursor-pointer"
+              >
                 <child.icon size={30} />
                 <p className="text-xs mt-1">{child.name}</p>
-                 <iframe
+                <iframe
                   src={child.path}
                   title={folder.name}
                   className="flex-1 w-full"
-      />
+                />
+              </a>
+            </div>
+          ))}
+        </div>
+        <div className={` p-4 flex-1 overflow-auto ${isRansomwareActive ? 'grid grid-cols-3 gap-4' : 'hidden'}`}>
+          {folder?.children.map((child, idx) => (
+            <div key={idx} className="">
+              {console.log(child)}
+              <a
+                href=""
+                className="flex flex-col items-center text-white cursor-pointer"
+              >
+                <child.icon size={30} />
+                <p className="text-xs mt-1">{encrypt(child.name)}</p>
+                <iframe
+                  src={child.path}
+                  title={folder.name}
+                  className="flex-1 w-full"
+                />
               </a>
             </div>
           ))}

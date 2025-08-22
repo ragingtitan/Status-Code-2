@@ -20,7 +20,7 @@ export const files = [
     type: "folder",
     icon: FaFolder,
     children: [
-      { name: "Resume.pdf", type: "file", icon: FaFileAlt, locked:false, lockedName:"" },
+      { name: "Resume.pdf", type: "file", icon: FaFileAlt },
       { name: "Notes.txt", type: "file", icon: FaFileAlt },
     ],
   },
@@ -48,7 +48,7 @@ export const files = [
   // { name: "Code Editor", type: "app", icon: FaCode },
   { name: "Trash", type: "folder", icon: FaTrash,
     children: [
-      { name: "deteted_notes.txt", type: "file", icon: FaFileAlt },
+      { name: "deleted_notes.txt", type: "file", icon: FaFileAlt },
       { name: "deleted_image.jpg", type: "image", icon: FaImage,path:'/src/assets/' },
     ], },
   { name: "Ransomware.exe", type: "malware", icon: FaSkull, 

@@ -7,6 +7,7 @@ import Fileviewer from "./Components/Fileviewer";
 import { AppContext } from "./Components/AppContext";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import Terminal from "./Components/Terminal";
 function App() {
   const { isSessionActive, setIsRansomwareActive } = useContext(AppContext);
   return (
@@ -28,6 +29,9 @@ function App() {
           <Route path="/file" element={
             isSessionActive ? <Fileviewer /> : <Navigate to="/" />
           
+          }/>
+          <Route path="/terminal" element={
+            isSessionActive ? <Terminal /> : <Navigate to="/" />
           }/>
         </Routes>
       </BrowserRouter>
