@@ -4,7 +4,7 @@ import FolderStart from './FolderStart';
 const Sidebar = () => {
   return (
     <div className='h-screen w-24 fixed'>
-        <div className='h-1/2 absolute top-1/4 p-4 rounded-r-lg w-24 resize bg-[#05161a]'>
+        <div className='h-1/2 absolute z-100 top-1/4 p-4 rounded-r-lg w-24 bg-[#05161a]'>
             {console.log(files)}
             <div className='w-full flex flex-col justify-start items-center gap-4'>
               {files.map((file, index) => (
