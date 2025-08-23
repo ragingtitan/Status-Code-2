@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import { Rnd } from "react-rnd";
 import { AppContext } from "./AppContext";
-
+import { FiX } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 const fakeCommands = {
   help: "Available commands: help, whoami, date, clear",
   whoami: "raging_titan",
@@ -36,17 +37,21 @@ export default function Terminal({ terminal }) {
     setInput("");
   };
 
+  const navigate = useNavigate();
+
   return (
-    <Rnd default={{ x: 150, y: 150, width: 500, height: 300 }} bounds="parent">
+    <Rnd default={{ x: 300, y: 25, width: 800, height: 600 }} bounds="parent">
       <div className="flex flex-col bg-black text-white border border-gray-600 rounded shadow-lg h-full">
         {/* Title Bar */}
         <div className="flex justify-between items-center bg-gray-800 px-3 py-1">
           <span>{terminal?.name || "Terminal"}</span>
           <button
             className="text-red-400"
-            onClick={() => closeFile(terminal)}
+            onClick={() => {
+              navigate('/');
+            }}
           >
-            X
+            <FiX/>
           </button>
         </div>
 

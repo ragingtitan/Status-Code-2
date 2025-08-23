@@ -67,7 +67,7 @@ export const AppContext = createContext();
 export const DesktopProvider = ({ children }) => {
   // state stuff...
 
-  const [isRansomwareActive, setIsRansomwareActive] = useState(false);
+  const [isRansomwareActive, setIsRansomwareActive] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSessionActive, setIsSessionActive] = useState(true);
   const [popup, setPopup] = useState({heading: "", message: "", open: false});

@@ -91,9 +91,9 @@ References available on request.`,
   },
 
   // --- Apps (Linux-like desktop apps) ---
-  { name: "Terminal", type: "app", icon: FaTerminal },
+  { name: "Terminal", type: "app", icon: FaTerminal, link:'terminal' },
   // { name: "Browser", type: "app", icon: FaGlobe },
-  { name: "Settings", type: "app", icon: FaCog },
+  { name: "Settings", type: "app", icon: FaCog,link:'settings' },
   // { name: "Code Editor", type: "app", icon: FaCode },
   {
     name: "Trash",

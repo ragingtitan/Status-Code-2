@@ -4,6 +4,9 @@ import { encrypt } from "./Encrypt";
 import { useContext } from "react";
 import { AppContext } from "./AppContext";
 import { Link } from "react-router-dom";
+
+import { MdLock } from "react-icons/md";
+
 export default function Start({ folder, onClose }) {
   const { isRansomwareActive } = useContext(AppContext);
   const { popup, setPopup } = useContext(AppContext);
@@ -82,21 +85,21 @@ export default function Start({ folder, onClose }) {
                           </span>
                           <br />
                           <span className="text-yellow-400">
-                            Surrender to the darkness or watch everything
+                            Surrender to the darkness and pay $3000 or watch everything
                             perish.
                           </span>
                         </p>
 
                         <div className="flex gap-2 mt-3">
-                          <button
+                          <Link to="/pay"
                             onClick={() => {
                               console.log("User acknowledged.");
                               setPopup((prev) => ({ ...prev, open: false }));
                             }}
                             className="px-4 py-2 bg-blue-600 text-white rounded"
                           >
-                            OK
-                          </button>
+                            Pay Ransome Now
+                          </Link>
                         </div>
                       </div>
                     ),
@@ -107,7 +110,10 @@ export default function Start({ folder, onClose }) {
                 }
                 className="flex flex-col items-center text-white cursor-pointer"
               >
-                <child.icon size={30} />
+               <div className="px-4 py-2 bg-gray-700 rounded">
+
+  <MdLock size={30} className="text-yellow-500" />
+ </div>
                 <p className="text-xs mt-1">{encrypt(child.name)}</p>
               </button>
             </div>
