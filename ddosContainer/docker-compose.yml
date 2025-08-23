@@ -2,35 +2,42 @@ services:
   app:
     build: .
     container_name: fastapi-app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
     depends_on:
       - redis
-    environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6378
 
   redis:
     image: redis:8-alpine
     container_name: redis-limiter
     ports:
       - "6378:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
 
-  locust-master:
+  locust-runner:
     image: locustio/locust
-    container_name: locust-master
+    working_dir: /mnt/locust
+    command: tail -f /dev/null
     volumes:
-      - ./test/locustfile.py:/mnt/locust/locustfile.py
-    ports:
-      - "8089:8089" # Locust Web UI
-    command: -f /mnt/locust/locustfile.py --master --host http://app:8000
+      - ./test:/mnt/locust
+      - ./results:/results
     depends_on:
       - app
 
-  locust-worker:
+  locust-ui:
     image: locustio/locust
+    profiles: ["ui"]
+    working_dir: /mnt/locust
     volumes:
-      - ./test/locustfile.py:/mnt/locust/locustfile.py
-    command: -f /mnt/locust/locustfile.py --worker --master-host locust-master
+      - ./test:/mnt/locust
+      - ./results:/results
+    ports:
+      - "8089:8089"
+    command: -f /mnt/locust/locustfile.py --master --host http://app:8000
     depends_on:
-      - locust-master
+      - app
