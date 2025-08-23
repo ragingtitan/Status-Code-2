@@ -12,8 +12,8 @@ import {
   FaEnvelope,
   FaTrash,
   FaSkull,
+  FaUnlock
 } from "react-icons/fa";
-
 export const files = [
   {
     name: "Documents",
@@ -126,4 +126,13 @@ Old content:
 This program encrypts your files when executed.
 Do not run unless you want your data locked.`,
   },
+  {
+    name: "Antivirus.exe",
+    type: "antivirus",
+    icon: FaUnlock,
+    link: 'antivirus',
+    content: `⚠️ WARNING ⚠️,
+This program encrypts your files when executed.
+Do not run unless you want your data locked.`,
+  }
 ];

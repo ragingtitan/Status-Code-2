@@ -1,78 +1,43 @@
-// import { createContext, useContext, useState } from "react";
-
-// // Create context
-// const AppContext = createContext();
-
-// // Custom hook for easy usage
-// export const useAppContext = () => useContext(AppContext);
-
-// // Provider component
-// export const DesktopProvider = ({ children }) => {
-//   const [openFolders, setOpenFolders] = useState([]);
-//   const [openFiles, setOpenFiles] = useState([]);
-//   const [isRansomwareActive, setIsRansomwareActive] = useState(false);
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
-//   const [isSessionActive, setIsSessionActive] = useState(false);
-
-//   // Folder functions
-//   const openFolder = (folder) => {
-//     if (!openFolders.includes(folder)) {
-//       setOpenFolders([...openFolders, folder]);
-//     }
-//   };
-
-//   const closeFolder = (folder) => {
-//     setOpenFolders(openFolders.filter((f) => f !== folder));
-//   };
-
-//   // File functions
-//   const openFile = (file) => {
-//     if (!openFiles.includes(file)) {
-//       setOpenFiles([...openFiles, file]);
-//     }
-//   };
-
-//   const closeFile = (file) => {
-//     setOpenFiles(openFiles.filter((f) => f !== file));
-//   };
-
-//   return (
-//     <AppContext.Provider
-//       value={{
-//         openFolders,
-//         openFiles,
-//         openFolder,
-//         closeFolder,
-//         openFile,
-//         closeFile,
-//         isRansomwareActive,
-//         setIsRansomwareActive,
-//         isLoggedIn,
-//         setIsLoggedIn,
-//         isSessionActive,
-//         setIsSessionActive,
-//       }}
-//     >
-//       {children}
-//     </AppContext.Provider>
-//   );
-// };
-
-
-// AppContext.jsx
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const AppContext = createContext();
 
 export const DesktopProvider = ({ children }) => {
-  // state stuff...
+  // --- Read from localStorage safely ---
+  const getLocalStorageBool = (key, defaultValue) => {
+    const value = localStorage.getItem(key);
+    return value !== null ? value === "true" : defaultValue;
+  };
 
-  const [isRansomwareActive, setIsRansomwareActive] = useState(true);
+  // --- States with persistence ---
+  const [isRansomwareActive, setIsRansomwareActive] = useState(() =>
+    getLocalStorageBool("ransomwareActive", false)
+  );
+  const [isSessionActive, setIsSessionActive] = useState(() =>
+    getLocalStorageBool("sessionActive", true)
+  );
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isSessionActive, setIsSessionActive] = useState(true);
-  const [popup, setPopup] = useState({heading: "", message: "", open: false});
+  const [popup, setPopup] = useState({ heading: "", message: "", open: false });
 
- return (
+  // --- Keep localStorage in sync when states change ---
+  useEffect(() => {
+    localStorage.setItem("ransomwareActive", isRansomwareActive);
+  }, [isRansomwareActive]);
+
+  useEffect(() => {
+    localStorage.setItem("sessionActive", isSessionActive);
+  }, [isSessionActive]);
+
+  // --- Functions to change states globally ---
+  const changeMalwareState = (state) => {
+    setIsRansomwareActive(state);
+  };
+
+  const changeSessionState = (active) => {
+    setIsSessionActive(active);
+  };
+
+  return (
     <AppContext.Provider
       value={{
         isRansomwareActive,
@@ -83,6 +48,8 @@ export const DesktopProvider = ({ children }) => {
         setIsSessionActive,
         popup,
         setPopup,
+        changeMalwareState,
+        changeSessionState,
       }}
     >
       {children}

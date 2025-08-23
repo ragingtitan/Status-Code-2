@@ -1,9 +1,9 @@
 import { Rnd } from "react-rnd";
 import { FaWindowMinimize, FaWindowMaximize, FaWindowClose } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import GoBack from "./GoBack";
 
-export default function LinuxFile({ file, onClose }) {
+export default function LinuxFile({ file }) {
   const location = useLocation();
   const fileData = location.state;
   console.log(fileData);
@@ -32,10 +32,9 @@ export default function LinuxFile({ file, onClose }) {
               <FaWindowMaximize />
             </button>
             <button
-              onClick={onClose}
               className="hover:text-red-500"
             >
-              <FaWindowClose />
+              <GoBack />
             </button>
           </div>
         </div>

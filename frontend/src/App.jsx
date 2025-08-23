@@ -8,11 +8,15 @@ import { AppContext } from "./Components/AppContext";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import Terminal from "./Components/Terminal";
+import Antivirus from "./Components/Antivirus";
+import { toast,ToastContainer } from "react-toastify";
+
 function App() {
   const { isSessionActive, setIsRansomwareActive } = useContext(AppContext);
   return (
   
-      <BrowserRouter>
+     <>
+       <BrowserRouter>
         <Routes>
           <Route path="/" element={
             isSessionActive ? <Navigate to="/main" /> : <StartPage />
@@ -33,9 +37,12 @@ function App() {
           <Route path="/terminal" element={
             isSessionActive ? <Terminal /> : <Navigate to="/" />
           }/>
+        <Route path="/antivirus" element={<Antivirus/>}/>
         </Routes>
       </BrowserRouter>
+    <ToastContainer position="top-center" limit={1} />
  
+     </>
   );
 }
 

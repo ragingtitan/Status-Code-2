@@ -70,8 +70,7 @@ export default function Start({ folder, onClose }) {
                     message: (
                       <div>
                         <p className="text-red-600 font-extrabold text-center text-lg animate-pulse">
-                          ☠️ Y͟O͟U͟R͟ F͟I͟L͟E͟ <b>{encrypt(child.name)}</b> I͟S͟ D͟O͟O͟M͟E͟D͟ ⚠️
-                          ☠️
+                          ☠️ Y͟O͟U͟R͟ F͟I͟L͟E͟ <b>{encrypt(child.name)}</b> I͟S͟ D͟O͟O͟M͟E͟D͟ ⚠️ ☠️
                           <br />
                           <span className="text-white">
                             The file <b>{encrypt(child.name)}</b> has been{" "}
