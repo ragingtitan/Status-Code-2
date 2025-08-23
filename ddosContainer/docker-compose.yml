@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    container_name: fastapi-app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6378
+
+  redis:
+    image: redis:8-alpine
+    container_name: redis-limiter
+    ports:
+      - "6378:6379"
+
+  locust-master:
+    image: locustio/locust
+    container_name: locust-master
+    volumes:
+      - ./test/locustfile.py:/mnt/locust/locustfile.py
+    ports:
+      - "8089:8089" # Locust Web UI
+    command: -f /mnt/locust/locustfile.py --master --host http://app:8000
+    depends_on:
+      - app
+
+  locust-worker:
+    image: locustio/locust
+    volumes:
+      - ./test/locustfile.py:/mnt/locust/locustfile.py
+    command: -f /mnt/locust/locustfile.py --worker --master-host locust-master
+    depends_on:
+      - locust-master
