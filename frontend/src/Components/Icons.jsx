@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 
 const Icons = () => {
   const [openFolders, setOpenFolders] = useState([]);
-  const { changeMalwareState, isRansomwareActive } = useContext(AppContext);
+  const { changeMalwareState, isRansomwareActive,removedMalware,
+        setRemovedMalware, } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleAppOpen = (file) => {
@@ -62,7 +63,7 @@ const Icons = () => {
               )}
 
               {/* Malware */}
-              {file.type === "malware" && (
+              {file.type === "malware" &&  !removedMalware &&(
                 <button
                   onDoubleClick={() => changeMalwareState(true)}
                   className="desktop-icon flex flex-col items-center cursor-pointer gap-2 p-2 hover:bg-gray-700 rounded-lg transition"

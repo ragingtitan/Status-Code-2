@@ -4,7 +4,8 @@ import { AppContext } from "./AppContext";
 import { useContext } from "react";
 export default function AntivirusUI() {
     const {   changeMalwareState,
-        changeSessionState } = useContext(AppContext);
+        changeSessionState,removedMalware,setRemovedMalware,
+ } = useContext(AppContext);
   const [scanning, setScanning] = useState(false);
   const [status, setStatus] = useState("idle");
 
@@ -21,6 +22,8 @@ export default function AntivirusUI() {
     }, 4000);
     
     changeMalwareState(false);
+     setRemovedMalware(true);
+
     setTimeout(() => {
       setStatus("✅ Ransomware removed successfully!");
       setScanning(false);

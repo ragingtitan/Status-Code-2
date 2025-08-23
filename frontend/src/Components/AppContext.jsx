@@ -13,6 +13,7 @@ export const DesktopProvider = ({ children }) => {
   const [isRansomwareActive, setIsRansomwareActive] = useState(() =>
     getLocalStorageBool("ransomwareActive", false)
   );
+  const [removedMalware, setRemovedMalware] = useState(false);
   const [isSessionActive, setIsSessionActive] = useState(() =>
     getLocalStorageBool("sessionActive", true)
   );
@@ -50,6 +51,8 @@ export const DesktopProvider = ({ children }) => {
         setPopup,
         changeMalwareState,
         changeSessionState,
+        removedMalware,
+        setRemovedMalware,
       }}
     >
       {children}
